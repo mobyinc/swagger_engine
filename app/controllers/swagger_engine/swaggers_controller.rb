@@ -18,7 +18,7 @@ module SwaggerEngine
         format.json {
           scheme = Rails.env == 'development' ? 'http' : 'https'
           contents = File.read(@json_files[params[:id].to_sym])
-          contents = contents.gsub('{{scheme}}', 'http')
+          contents = contents.gsub('{{scheme}}', scheme)
           send_data contents, type: 'application/json', disposition: 'inline'
           # send_file @json_files[params[:id].to_sym], type: 'application/json', disposition: 'inline'
         }
